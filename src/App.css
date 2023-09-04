@@ -1,0 +1,100 @@
+*{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.App {
+  text-align: center;
+}
+h1{
+  color:rgb(48, 152, 170)
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.center{
+  display:block;
+}
+.filter-btn-done{
+
+  float: right;
+  line-height :25px;
+  color: white;
+  background-color: green;
+  border:  solid 2px black;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.filter-btn-del{
+  /* position: fixed ; */
+  /* right: 0; */
+  float: right;
+  line-height :25px;
+  color: white;
+  background-color: red;
+  border:  solid 2px black;
+  border-radius: 10px;
+  margin-left: 10px;
+
+}
+.filter-btn-edit{
+  /* position: fixed ; */
+  /* right: 0; */
+  float: right;
+  line-height :25px;
+  color: white;
+  background-color: rgb(59, 161, 144);
+  border:  solid 2px black;
+  border-radius: 10px;
+}
+.list-items{
+  display: inline-block;
+  width:400px;
+}
+.btns-right{
+  left :200px;
+  float: right;
+}
+.lis{
+  display: inline;
+  height: 30px;
+  width: 70%;
+  margin-right: 50px;
+}
+.input-bar{
+  font-size: medium;
+  margin: 20px;
+  height: 40px;
+  width: 400px;
+  border-radius: 10px;
+  border: black 5px solid;
+}
+.btn{
+  height: 45px;
+  width: 85px;
+  margin: 20px;
+  color: white;
+  background-color: green;
+  border:  solid 2px black;
+  border-radius: 10px;
+}
+.btn:hover{
+  border:  solid 2px white;
+}
+.filter-btn-del:hover{
+  border:  solid 2px white;
+}
+.filter-btn-done:hover{
+  border:  solid 2px white;
+}
+.filter-btn-edit:hover{
+  border:  solid 2px white;
+}
+
+li{
+  margin: 10px;
+}
