@@ -136,7 +136,8 @@ function App() {
         </button>
         <br />
         <ul>
-          {newTask.map((tasks, index) => {
+          {!newTask.length>0 ? <p>No Task Added</p> :
+          newTask.map((tasks, index) => {
             return (
               <div key={index} className="li-items">
                 <li className="ind-li" key={index}>

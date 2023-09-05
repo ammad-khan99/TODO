@@ -26,7 +26,7 @@ text-align: center;
 
   float: right;
   line-height :25px;
-  color: white;
+  color: black;
   background-color: green;
   border:  solid 0.5px black;
   border-radius: 10px;
@@ -44,8 +44,9 @@ text-align: center;
 .filter-btn-edit{
   float: right;
   line-height :25px;
-  color: white;
-  background-color: rgb(94, 21, 122);
+  color: black;
+  /* background-color: rgb(94, 21, 122); */
+  background: transparent;
   border: black 0.5px solid;
   border-radius: 10px;
   margin-left: 10px;
