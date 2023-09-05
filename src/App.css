@@ -1,23 +1,26 @@
 *{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
 }
 .App {
   text-align: center;
 }
 h1{
-  color:rgb(48, 152, 170)
+text-align: center;
+  color : #001831;
 }
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(#e66465, #9198e5); 
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* font-size: calc(10px + 2vmin); */
+  font-size: small;
+  color: rgb(0, 0, 0);
 }
 .center{
   display:block;
+  background-color: rgba(255, 255, 255, 0.226);
 }
 .filter-btn-done{
 
@@ -25,31 +28,27 @@ h1{
   line-height :25px;
   color: white;
   background-color: green;
-  border:  solid 2px black;
+  border:  solid 0.5px black;
   border-radius: 10px;
-  margin-left: 10px;
 }
 .filter-btn-del{
-  /* position: fixed ; */
-  /* right: 0; */
   float: right;
   line-height :25px;
-  color: white;
-  background-color: red;
-  border:  solid 2px black;
+  color: black;
+  border:  solid 0.5px black;
   border-radius: 10px;
   margin-left: 10px;
+  background: transparent;
 
 }
 .filter-btn-edit{
-  /* position: fixed ; */
-  /* right: 0; */
   float: right;
   line-height :25px;
   color: white;
-  background-color: rgb(59, 161, 144);
-  border:  solid 2px black;
+  background-color: rgb(94, 21, 122);
+  border: black 0.5px solid;
   border-radius: 10px;
+  margin-left: 10px;
 }
 .list-items{
   display: inline-block;
@@ -68,18 +67,20 @@ h1{
 .input-bar{
   font-size: medium;
   margin: 20px;
-  height: 40px;
+  height: 25px;
+  padding: 5px ;
   width: 400px;
   border-radius: 10px;
-  border: black 5px solid;
+  border: black 0.5px solid;
+  background: transparent;
 }
 .btn{
-  height: 45px;
-  width: 85px;
+  height: 35px;
+  width: 80px;
   margin: 20px;
   color: white;
-  background-color: green;
-  border:  solid 2px black;
+  background-color: rgba(103, 17, 216, 0.253);
+  border: black 0.5px solid;
   border-radius: 10px;
 }
 .btn:hover{
@@ -94,7 +95,6 @@ h1{
 .filter-btn-edit:hover{
   border:  solid 2px white;
 }
-
 li{
   margin: 10px;
 }

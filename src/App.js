@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 
 function App() {
   const [text, setText] = useState("");
@@ -8,8 +9,11 @@ function App() {
   const [taskId, setTaskId] = useState(null);
   const [addBtn, setAddBtn] = useState("Add");
   let [id, setId] = useState(0);
-  let pending = newTask.filter((task) => task.completed === false);
-  let complete = newTask.filter((task) => task.completed === true);
+  const noTaskMessagesOnFilter = {
+    all: "No Task Found",
+    pending: "No Pending Tasks",
+    completed: "No Completed Tasks",
+  };
 
   const handleChange = (event) => {
     setText(event.target.value);
@@ -39,6 +43,7 @@ function App() {
     setTaskId(editTask[0].id);
     return newTask, taskId;
   };
+
   const handleAdd = () => {
     if (text) {
       if (addBtn === "Edit") {
@@ -69,37 +74,51 @@ function App() {
     }
   };
 
-  const handleFilteredTask = () => {
-    if (
-      (status === "all" && !newTask.length > 0) ||
-      (status === "pending" && !pending.length > 0) ||
-      (status === "completed" && !complete.length > 0)
-    ) {
-      return (
-        <p>
-          {status === "all"
-            ? "No Task"
-            : status === "pending"
-            ? "No Pending Tasks"
-            : "No Completed Tasks"}
-        </p>
-      );
-    } else if (status === "all") {
-      return newTask.map((task, index) => {
-        return <li key={index}>{task.task}</li>;
-      });
+  const handleShowAllTasks = () => {
+    if (newTask.length > 0) {
+      return newTask;
+    } else {
+      return null;
+    }
+  };
+
+  const handleShowPendingsTasks = () => {
+    if (newTask.length > 0) {
+      const pendingTask = newTask.filter((task) => task.completed === false);
+      return pendingTask.length > 0 ? pendingTask : null;
+    } else {
+      return null;
+    }
+  };
+
+  const handleShowCompletedTasks = () => {
+    if (newTask.length > 0) {
+      const completedTask = newTask.filter((task) => task.completed === true);
+      return completedTask.length > 0 ? completedTask : null;
+    } else {
+      return null;
+    }
+  };
+
+  const handleShowFilteredTasks = () => {
+    let filtered = null;
+    if (status === "all") {
+      filtered = handleShowAllTasks();
     } else if (status === "pending") {
-      const pending = newTask.filter((task) => task.completed === false);
-      return pending.map((task, index) => {
-        return <li key={index}>{task.task}</li>;
-      });
+      filtered = handleShowPendingsTasks();
     } else if (status === "completed") {
-      const completed = newTask.filter((task) => task.completed === true);
-      return completed.map((task, index) => {
+      filtered = handleShowCompletedTasks();
+    }
+    if (filtered === null) {
+      const enteredMessage = noTaskMessagesOnFilter[status];
+      return <p>{enteredMessage}</p>;
+    } else {
+      return filtered.map((task, index) => {
         return <li key={index}>{task.task}</li>;
       });
     }
   };
+
   return (
     <div className="App-header">
       <div className="center">
@@ -119,34 +138,36 @@ function App() {
         <ul>
           {newTask.map((tasks, index) => {
             return (
-              <li key={index}>
-                <div className="list-items">
-                  <div className="lis"> {tasks.task}</div>
-                  <div className="btns-right">
-                    <button
-                      className="filter-btn-done"
-                      onClick={() => handleDone(tasks)}
-                      style={{
-                        backgroundColor: tasks.completed ? "Green" : "Orange",
-                      }}
-                    >
-                      {tasks.completed ? "Done" : "Pending"}
-                    </button>
-                    <button
-                      className="filter-btn-del"
-                      onClick={() => handleDelete(tasks)}
-                    >
-                      Delete
-                    </button>
-                    <button
-                      className="filter-btn-edit"
-                      onClick={() => handleEdit(tasks)}
-                    >
-                      Edit
-                    </button>
+              <div key={index} className="li-items">
+                <li className="ind-li" key={index}>
+                  <div className="list-items">
+                    <div className="lis"> {tasks.task}</div>
+                    <div className="btns-right">
+                      <button
+                        className="filter-btn-del"
+                        onClick={() => handleDelete(tasks)}
+                      >
+                        <FaTrash />
+                      </button>
+                      <button
+                        className="filter-btn-edit"
+                        onClick={() => handleEdit(tasks)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="filter-btn-done"
+                        onClick={() => handleDone(tasks)}
+                        style={{
+                          backgroundColor: tasks.completed ? "Green" : "Orange",
+                        }}
+                      >
+                        {tasks.completed ? "Done" : "Pending"}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              </div>
             );
           })}
         </ul>
@@ -159,7 +180,7 @@ function App() {
         <button className="btn" onClick={() => handleFilter("completed")}>
           Completed
         </button>
-        <ul>{handleFilteredTask()}</ul>
+        <ul>{handleShowFilteredTasks()}</ul>
       </div>
     </div>
   );
